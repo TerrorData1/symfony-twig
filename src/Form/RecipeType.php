@@ -15,6 +15,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
+
 class RecipeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -25,6 +26,7 @@ class RecipeType extends AbstractType
             ])
             ->add('slug', TextType::class, [
                 'required' => false,
+
             ])
             ->add('content', TextareaType::class, [
                 'empty_data' => ''
