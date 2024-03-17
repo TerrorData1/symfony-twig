@@ -4,10 +4,10 @@
 
 {% block body %}
 
-	<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est alias cumque voluptas ad dolores possimus dignissimos excepturi, et quam assumenda dolor consectetur saepe atque beatae esse praesentium eaque mollitia maxime?</p>
+	<p>Bienvenue dans l'espace administrateur de notre site de recettes ! Ici, vous avez le contrôle total sur le contenu culinaire. Ajoutez de nouvelles recettes pour ravir les papilles de nos visiteurs, modifiez les existantes pour perfectionner chaque détail et supprimez celles qui ne correspondent plus à notre palette gustative. Avec des outils conviviaux et intuitifs, la gestion des recettes devient un jeu d'enfant, vous permettant de façonner notre sélection pour offrir une expérience gastronomique incomparable à nos utilisateurs.</p>
 
 	<p>
-		<a href="{{ path('recipe.create') }}" class="btn btn-primary btn-sm">Créer une recette</a>
+		<a href="{{ path('recipe.create') }}" class="btn btn-primary btn-sm"><i class="bi bi-plus"></i>Créer une recette</a>
 	</p>
 
 	<table class="table">
@@ -25,10 +25,10 @@
 					</td>
 					<td>
 						<div class="d-flex gap-1">
-							<a href="{{ path('recipe.edit', {id: recipe.id}) }}" class="btn btn-primary btn-sm">Editer</a>
+							<a href="{{ path('recipe.edit', {id: recipe.id}) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i> Modifier</a>
 							<form action="{{ path('recipe.delete', {id: recipe.id}) }}" method="post">
 								<input type="hidden" name="_method" value="DELETE">
-								<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+								<button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
 							</form>
 						</div>
 
