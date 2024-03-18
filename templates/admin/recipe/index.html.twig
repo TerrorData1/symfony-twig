@@ -5,14 +5,16 @@
 {% block body %}
 
 	<p>
-		<a href="{{ path('admin.recipe.create') }}" class="btn btn-primary btn-sm"><i class="bi bi-plus"></i>Créer une recette</a>
+		<a href="{{ path('admin.recipe.create') }}" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Créer une recette</a>
 	</p>
 
 	<table class="table">
 		<thead>
 			<tr>
 				<th>Titre</th>
-				<th>Actions</th>
+				<th>Catégorie</th>
+				<th style="width: 200px">Actions</th>
+
 			</tr>
 		</thead>
 		<tbody>
@@ -21,9 +23,10 @@
 					<td>
 						<a href="{{ path('admin.recipe.edit', {id: recipe.id}) }}">{{ recipe.title }}</a>
 					</td>
+					<td>{{ recipe.category.name | default('') }}</td>
 					<td>
 						<div class="d-flex gap-1">
-							<a href="{{ path('admin.recipe.edit', {id: recipe.id}) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i> Modifier</a>
+							<a href="{{ path('admin.recipe.edit', {id: recipe.id}) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i> Editer</a>
 							<form action="{{ path('admin.recipe.delete', {id: recipe.id}) }}" method="post">
 								<input type="hidden" name="_method" value="DELETE">
 								<button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
