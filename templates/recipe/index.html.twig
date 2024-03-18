@@ -25,7 +25,7 @@
 					</td>
 					<td>
 						<div class="d-flex gap-1">
-							<a href="{{ path('recipe.edit', {id: recipe.id}) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i> Modifier</a>
+							<a href="{{ path('recipe.edit', {id: recipe.id}) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i> Modifier</a>
 							<form action="{{ path('recipe.delete', {id: recipe.id}) }}" method="post">
 								<input type="hidden" name="_method" value="DELETE">
 								<button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
