@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Recipe;
 use DateTimeImmutable;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Event\PostSubmitEvent;
 use Symfony\Component\Form\Event\PreSubmitEvent;
@@ -33,6 +35,14 @@ class RecipeType extends AbstractType
                 'required' => false,
 
             ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'expanded' => true,
+                'choice_label' => 'name',
+            ])
+
+
+
             ->add('content', TextareaType::class, [
                 'empty_data' => ''
             ])
