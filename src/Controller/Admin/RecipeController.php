@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 use App\Demo;
 use App\Entity\Recipe;
 use App\Form\RecipeType;
+use App\Kernel;
 use App\Repository\CategoryRepository;
 use App\Repository\RecipeRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 #[Route("/admin/recettes", name: 'admin.recipe.')]
 class RecipeController extends AbstractController
@@ -54,11 +56,12 @@ class RecipeController extends AbstractController
     #[Route('/{id}', name: 'edit', methods: ['GET', 'POST'], requirements: ['id' => Requirement::DIGITS])]
     public function edit(Recipe $recipe, Request $request, EntityManagerInterface $em): Response
     {
+
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
-            $this->addFlash('success', 'La recette a bien été modifiée');
+            $this->addFlash('success', 'Le produit a bien été modifiée');
             return $this->redirectToRoute('admin.recipe.index');
         }
         return $this->render('admin/recipe/edit.html.twig', [
