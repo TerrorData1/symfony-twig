@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 use App\Demo;
 use App\Entity\Recipe;
+use App\Entity\User;
 use App\Form\RecipeType;
 use App\Kernel;
 use App\Repository\CategoryRepository;
@@ -13,16 +14,25 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
-#[Route("/admin/recettes", name: 'admin.recipe.')]
+#[Route('admin/products', name: 'admin.recipe.')]
 class RecipeController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(RecipeRepository $repository, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager): Response
+    public function index(RecipeRepository $repository, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager, UserPasswordHasherInterface $hasher): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        // $user = new User();
+        // $user->setEmail('john@doe.fr');
+        // $user->setUsername('johnDoe');
+        // $user->setPassword($hasher->hashPassword($user, '0000'));
+        // $user->setRoles(['']);
+        // $em->persist($user);
+        // $em->flush();
         // $platPrincipal = $categoryRepository->findOneBy(['slug' => 'plat-principal']);
         // $noodle = $repository->findOneBy(['slug' => 'ramen-japonais']);
         // $noodle->setCategory($platPrincipal);
@@ -60,6 +70,8 @@ class RecipeController extends AbstractController
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //test dump
             /** @var Uploaded $file */
             // $file = $form->get('thumbnailFile')->getData();
             // $filename = $recipe->getId() . '.' . $file->getClientOriginalExtension();
