@@ -25,7 +25,7 @@
   <a class="nav-link mx-3 {{ app.current_route == 'home' ? 'active' : '' }}" href="{{ path('home')}}">Accueil</a>
   </li>
   <li class="nav-item">
-  <a class="nav-link mx-3">Boutique</a>
+  <a class="nav-link mx-3 {{ app.current_route starts with 'shop' ? 'active' : '' }}" href="{{ path('shop')}}">Boutique</a>
   </li>
   <li class="nav-item">
   <a class="nav-link mx-3 {{ app.current_route starts with 'about' ? 'active' : '' }}" href="{{ path('about.index')}}">À propos</a>

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RAMEN SHOP ACCUEIL{% endblock %}
+
+{% block body %}
+  {# <table class="table">
+		<thead>
+			<tr>
+				<th>Titre</th>
+				<th>Catégorie</th>
+				<th style="width: 200px">Actions</th> #}
+
+			{# </tr>
+		</thead>
+		<tbody>
+			{% for recipe in recipes %}
+				<tr>
+					<td>
+						<a href="{{ path('admin.recipe.edit', {id: recipe.id}) }}">{{ recipe.title }}</a>
+					</td>
+					<td>{{ recipe.category.name | default('') }}</td>
+					<td>
+						<div class="d-flex gap-1">
+							<a href="{{ path('admin.recipe.edit', {id: recipe.id}) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i> Editer</a>
+							<form action="{{ path('admin.recipe.delete', {id: recipe.id}) }}" method="post">
+								<input type="hidden" name="_method" value="DELETE">
+								<button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
+							</form>
+						</div>
+
+					</td>
+				</tr> #}
+
+
+                		<div class="d-flex justify-content-center">
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+
+			{% for recipe in recipes %}
+					<div class="col" style="width: 270px">
+
+						<div class="card">
+							  <img src="{{ vich_uploader_asset(recipe, 'thumbnailFile') }}" class="card-img-top" alt="...">
+
+							<div class="card-body">
+								<h5 class="card-title">{{ recipe.title }}</h5>
+								<p class="card-text">{{ recipe.category.name | default('') }}</p>
+								<a href="{{ path('admin.recipe.edit', {id: recipe.id}) }}" class="btn btn-secondary">Voir</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+				</div>
+			</div>
+			{# {% endfor %}
+		</tbody>
+	</table> #}
+{% endblock %}
