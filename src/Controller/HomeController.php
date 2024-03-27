@@ -28,7 +28,6 @@ class HomeController extends AbstractController
         $limit = 8;
         $recipes = $repo->paginateRecipes($page, $limit);
         $maxPage = ceil($recipes->count() / $limit);
-        // dd($recipes->count());
         return $this->render('shop/index.html.twig', [
             'recipes' => $recipes,
             'maxPage' => $maxPage,
