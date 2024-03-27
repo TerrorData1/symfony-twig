@@ -46,8 +46,10 @@
 								<p class="card-text">{{ recipe.category.name | default('') }}</p>
 								{# <p class="card-text">{{ recipe.content }}</p> #}
 								<h5 class="card-title text-secondary">{{ recipe.duration }} $</h5>
-
-								<a href="{{ path('article.show', {'slug': recipe.slug, 'id': recipe.id}) }}" class="btn btn-secondary">Voir</a>
+								
+								{# lien a href avec l'id #}
+								{# <a href="{{ path('article.show', {'slug': recipe.slug, 'id': recipe.id}) }}" class="btn btn-secondary">Voir</a> #}
+								<a href="{{ path('article.show', {'slug': recipe.slug}) }}" class="btn btn-secondary">Voir</a>
 
 							</div>
 						</div>
