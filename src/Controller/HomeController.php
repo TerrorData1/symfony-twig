@@ -21,13 +21,9 @@ class HomeController extends AbstractController
     #[Route('/shop', name: 'shop')]
     public function shop(RecipeRepository $repo): Response
     {
-
         $recipes = $repo->findWithDurationLowerThan(20);
         return $this->render('shop/index.html.twig', [
             'recipes' => $recipes
-            // $shop = $repo->findAll();
-            // return $this->render('shop/index.html.twig', [
-            //     'shop' => $shop
         ]);
     }
 }

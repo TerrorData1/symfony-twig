@@ -38,7 +38,7 @@ class RecipeRepository extends ServiceEntityRepository
             ->where('r.duration <= :duration')
             ->orderBy('r.duration', 'ASC')
             // ->andWhere('r.category = 1')
-            ->setMaxResults(10)
+            ->setMaxResults(20)
             ->setParameter('duration', $duration)
             ->getQuery()
             ->getResult();
